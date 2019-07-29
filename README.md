@@ -1,5 +1,3 @@
-# oystercard
-
 # Oystercard Challenge
 This week's challenge will start with going back over the basics we covered last week in Boris Bikes, giving you the chance to reinforce what you learned last week. You'll then be challenged to build a more complex system which should really stretch your skills in Ruby, TDD and object-oriented design.
 
@@ -15,8 +13,8 @@ Most code in the world is structured in small pieces called objects. This is don
 Weekly challenge user stories
 # Here are the user stories you will be working on for this project:
 
-In order to use public transport                 
-As a customer              
+In order to use public transport/                 
+As a customer                 
 I want money on my card            
 
 In order to keep using public transport
