@@ -1,2 +1,2 @@
-class Oystercard 
+class Oystercard
 end
