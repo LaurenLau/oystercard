@@ -13,7 +13,7 @@ Most code in the world is structured in small pieces called objects. This is don
 Weekly challenge user stories
 # Here are the user stories you will be working on for this project:
 
-In order to use public transport/                 
+In order to use public transport .                  
 As a customer                 
 I want money on my card            
 
