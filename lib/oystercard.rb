@@ -1,3 +1,4 @@
+
 class Oystercard
 
   MAXIMUM_BALANCE = 90
@@ -16,4 +17,9 @@ class Oystercard
   def deduct(amount)
     @balance -= amount
   end
+  
+  def in_journey?
+    false
+  end
+  
 end
