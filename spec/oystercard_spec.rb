@@ -27,18 +27,18 @@ describe Oystercard do
 
   describe '#in_journey' do
     it 'is initially not in journey' do
-      expect(subject).not_to be_in_journey
+      expect(subject.in_journey).to eq false
     end
 
     it 'is in journey after touch in' do
       subject.touch_in
-      expect(subject).to be_in_journey
+      expect(subject.in_journey).to eq true
     end
 
     it 'is not in journey after touch out' do
       subject.touch_in
       subject.touch_out
-      expect(subject).not_to be_in_journey
+      expect(subject.in_journey).to eq false
     end
   end
 end
