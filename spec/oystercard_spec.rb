@@ -5,6 +5,7 @@ describe Oystercard do
   max_balance = Oystercard::MAXIMUM_BALANCE
   min_balance = Oystercard::MINIMUM_BALANCE
   min_charge = Oystercard::MINIMUM_CHARGE
+  
   it 'has a balance of zero' do
     expect(subject.balance).to eq(0)
   end
@@ -21,6 +22,14 @@ describe Oystercard do
   end
 
   describe '#touch_in' do
+
+    let(:station){ double :station}
+
+    it 'accepts the entry station' do
+      subject.touch_in(station)
+      expect(subject.entry_station).to eq station
+    end
+    
     it 'has a minimum balance to touch_in' do
       expect{ subject.touch_in }.to raise_error "Please top up to touch in"
     end
