@@ -6,6 +6,8 @@ describe Oystercard do
   min_balance = Oystercard::MINIMUM_BALANCE
   min_charge = Oystercard::MINIMUM_CHARGE
   
+  let(:station){ double :station}
+
   it 'has a balance of zero' do
     expect(subject.balance).to eq(0)
   end
@@ -23,15 +25,14 @@ describe Oystercard do
 
   describe '#touch_in' do
 
-    let(:station){ double :station}
 
     it 'accepts the entry station' do
       subject.touch_in(station)
       expect(subject.entry_station).to eq station
     end
-    
+
     it 'has a minimum balance to touch_in' do
-      expect{ subject.touch_in }.to raise_error "Please top up to touch in"
+      expect{ subject.touch_in(station) }.to raise_error "Please top up to touch in"
     end
   end
 
@@ -48,12 +49,12 @@ describe Oystercard do
     end
 
     it 'is in journey after touch in' do
-      subject.touch_in
+      subject.touch_in(station)
       expect(subject.in_journey).to eq true
     end
 
     it 'is not in journey after touch out' do
-      subject.touch_in
+      subject.touch_in(station)
       subject.touch_out
       expect(subject.in_journey).to eq false
     end
