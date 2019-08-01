@@ -63,10 +63,9 @@ describe Oystercard do
   describe '#touch_out' do
   
     it 'deducts fare upon touching out' do
-      subject { Oystercard.new(DoubleJourneyClass) }
       subject.top_up(max_balance)
       subject.touch_in(entry_station)
-      expect{ subject.touch_out(exit_station) }.to change{ subject.balance }.by(-subject.journey.fare)
+      expect{ subject.touch_out(exit_station) }.to change{ subject.balance }.by(-Journey::MINIMUM_FARE)
     end
   end
 

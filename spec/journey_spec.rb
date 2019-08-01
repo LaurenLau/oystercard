@@ -21,7 +21,15 @@ describe Journey do
   
   describe '#fare' do
     it 'can produce a fare' do
-      expect(subject.fare).to eq(2)
+      subject.start(entry_station)
+      subject.finish(exit_station)     
+      expect(subject.fare).to eq(Journey::MINIMUM_FARE)
+    end
+  
+
+    it 'produces a penalty fare when if no entry station' do
+      subject.finish(exit_station)
+      expect(subject.fare).to eq(Journey::PENALTY_FARE)
     end
   end
 
