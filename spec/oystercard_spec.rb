@@ -2,11 +2,11 @@ require 'oystercard'
 
 describe Oystercard do
 
-  max_balance = Oystercard::MAXIMUM_BALANCE
-  min_balance = Oystercard::MINIMUM_BALANCE
-  min_charge = Oystercard::MINIMUM_CHARGE
+  let(:max_balance) { Oystercard::MAXIMUM_BALANCE }
+  let(:min_balance) { Oystercard::MINIMUM_BALANCE }
+  let(:min_charge) { Oystercard::MINIMUM_CHARGE }
   
-
+  
   let(:journey) { {entry_station: entry_station, exit_station: exit_station} }
   let(:station) { double(:station) }
 

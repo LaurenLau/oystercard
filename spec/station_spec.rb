@@ -1,9 +1,8 @@
 require 'station'
 
 describe Station do
-  
-  subject { described_class.new(name: "Algate East", zone: 1)}
 
+  subject {described_class.new(name: "Old Street", zone: 1)} 
   it 'has a name' do
     expect(subject.name).to eq("Algate East")
   end
@@ -13,3 +12,4 @@ describe Station do
   end
   
 end
+  
