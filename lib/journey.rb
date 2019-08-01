@@ -8,6 +8,7 @@ class Journey
 
   def start(station)
     @entry_station = station
+    @complete = false
   end
 
   def finish(station)

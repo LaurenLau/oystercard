@@ -8,7 +8,22 @@ describe Oystercard do
   
   let(:entry_station) { double(:entry_station) }
   let(:exit_station) { double(:exit_station) }
-  let(:journey) { {entry: entry_station, exit: exit_station} }
+
+  let(:DoubleJourneyClass) { 
+    double("DoubleJourneyClass",
+    :new => double(
+      "DoubleJourney",
+      :start => "has started",
+      :finish => "has finished",
+      :fare => 2,
+      :complete? => true
+      )
+    ) 
+    subject { Oystercard.new(DoubleJourneyClass) }
+  }
+
+  let(:journey) { DoubleJourneyClass.new }
+
 
   it 'initially has a balance of zero' do
     expect(subject.balance).to eq(0)
@@ -19,9 +34,11 @@ describe Oystercard do
   end
 
   it 'stores a list of journeys' do
+    subject { Oystercard.new(DoubleJourneyClass) }
     subject.top_up(min_balance)
     subject.touch_in(entry_station)
     subject.touch_out(exit_station)
+    journey = subject.journey
     expect(subject.journeys).to include journey
   end
 
@@ -46,12 +63,15 @@ describe Oystercard do
   describe '#touch_out' do
   
     it 'deducts fare upon touching out' do
+      subject { Oystercard.new(DoubleJourneyClass) }
       subject.top_up(max_balance)
-      expect{ subject.touch_out(exit_station) }.to change{ subject.balance }.by(-min_charge)
+      subject.touch_in(entry_station)
+      expect{ subject.touch_out(exit_station) }.to change{ subject.balance }.by(-subject.journey.fare)
     end
   end
 
   describe '#in_journey' do
+
     it 'is initially not in journey' do
       expect(subject).not_to be_in_journey
     end
@@ -68,6 +88,7 @@ describe Oystercard do
       subject.touch_out(exit_station)
       expect(subject).not_to be_in_journey
     end
+    
   end
 
 end
