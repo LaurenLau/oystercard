@@ -26,3 +26,7 @@ class Journey
   end
 
 end
+
+# Single responsibility principle
+# The journey class is responsible for containing the entry station, exit station, fare
+# for a each journey. It also checkes whether a journey is completed or not.

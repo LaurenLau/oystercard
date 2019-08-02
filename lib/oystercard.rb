@@ -14,7 +14,7 @@ class Oystercard
 
   def top_up(amount)
     fail "Maximum balance of #{MAXIMUM_BALANCE} exceeded" if amount + balance > MAXIMUM_BALANCE
-    @balance += amount 
+    @balance += amount
   end
 
   def in_journey?
@@ -41,3 +41,5 @@ class Oystercard
   
 end
 
+# Single responsibility principle
+# The oystercard class is responsible for touching in and out and maintaining the balance
